@@ -13,7 +13,7 @@ namespace Memories_App.Persistence
 
         Task AddUserMemoryAsync(UserMemory memory);
         Task RemoveUserMemoryAsync(UserMemory memory);
-        Task<UserMemory> GetAllUserMemoriesAsync();
+        Task<IEnumerable<UserMemory>> GetAllUserMemoriesAsync();
         Task RemoveAllUserMemoriesAsync();
         Task UpdateUserMemoryAsync(UserMemory memory);
 
