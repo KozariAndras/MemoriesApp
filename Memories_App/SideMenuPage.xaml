@@ -1,0 +1,12 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Memories_App.SideMenuPage"
+             Title="SideMenuPage">
+    <Grid>
+        <ScrollView Grid.Row="1">
+            <StackLayout x:Name="_NavButtonList">
+                
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
