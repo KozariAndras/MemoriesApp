@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memories_App", "Memories_App.csproj", "{E067D2E6-E4EE-48F9-9AC6-B837E01ECFEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Memories_App", "Memories_App.csproj", "{E067D2E6-E4EE-48F9-9AC6-B837E01ECFEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memories_App.Model", "..\Memories_App.Model\Memories_App.Model.csproj", "{84E92B04-424D-4511-A21A-C5A93000EECA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{E067D2E6-E4EE-48F9-9AC6-B837E01ECFEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E067D2E6-E4EE-48F9-9AC6-B837E01ECFEA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E067D2E6-E4EE-48F9-9AC6-B837E01ECFEA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{84E92B04-424D-4511-A21A-C5A93000EECA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E92B04-424D-4511-A21A-C5A93000EECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E92B04-424D-4511-A21A-C5A93000EECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E92B04-424D-4511-A21A-C5A93000EECA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
