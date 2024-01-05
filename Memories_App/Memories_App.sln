@@ -5,7 +5,9 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Memories_App", "Memories_App.csproj", "{E067D2E6-E4EE-48F9-9AC6-B837E01ECFEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memories_App.Model", "..\Memories_App.Model\Memories_App.Model.csproj", "{84E92B04-424D-4511-A21A-C5A93000EECA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Memories_App.Model", "..\Memories_App.Model\Memories_App.Model.csproj", "{84E92B04-424D-4511-A21A-C5A93000EECA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memories_App.Persistence", "..\Memories_App.Persistence\Memories_App.Persistence.csproj", "{2570ED0F-A4F2-4976-8494-09E33D262A7F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,10 @@ Global
 		{84E92B04-424D-4511-A21A-C5A93000EECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84E92B04-424D-4511-A21A-C5A93000EECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84E92B04-424D-4511-A21A-C5A93000EECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2570ED0F-A4F2-4976-8494-09E33D262A7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2570ED0F-A4F2-4976-8494-09E33D262A7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2570ED0F-A4F2-4976-8494-09E33D262A7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2570ED0F-A4F2-4976-8494-09E33D262A7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
