@@ -82,4 +82,27 @@ public partial class NewPicturePage : ContentPage
         _model.NewImage = null;
         await _model.LoadHomePageAsync();
     }
+
+    private void _model_PhotoLoaded(object sender, EventArgs e)
+    {
+        _displayImage.Source = ImageSource.FromStream(() => _model.GetImageStream());
+    }
+
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        _model.PhotoLoaded += _model_PhotoLoaded;
+    }
+
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        if (_model.NewImage != null)
+        {
+            _model.NewImage.Dispose();
+            _model.NewImage = null;
+        }
+        _model.PhotoLoaded -= _model_PhotoLoaded;
+    }
 }

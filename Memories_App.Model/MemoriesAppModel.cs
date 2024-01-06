@@ -92,7 +92,23 @@ namespace Memories_App.Model
         }
 
 
-        #region Location Methods
+        #region Additional Methods
+
+        public Stream? GetImageStream()
+        {
+            if (NewImage != null)
+            {
+                using (MemoryStream ms = new MemoryStream())
+                { 
+                    NewImage.SaveAsPng(ms);
+                    ms.Seek(0, SeekOrigin.Begin);
+                    return ms;
+                }
+            }
+            else return null;
+        }
+
+
 
         private CancellationTokenSource _cancelTokenSource;
         private bool _isCheckingLocation;
