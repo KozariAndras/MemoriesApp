@@ -51,5 +51,21 @@ namespace Memories_App.Persistence.DTO
                 this.Tags = tags;
             }
         }
+
+        public UserMemory(int id, Image<Rgba32> image, string title, string description, List<string> tags, DateTime date, Location location)
+        {
+            this.Id = id;
+            this.Image = image;
+            this.Title = title;
+            this.Description = description;
+            this.Tags = tags;
+            this.Date = date;
+            this.Location = location;
+        }
+
+        public UserMemory()
+        {
+            
+        }
     }
 }

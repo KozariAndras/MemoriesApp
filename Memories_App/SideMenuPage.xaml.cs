@@ -45,12 +45,12 @@ public partial class SideMenuPage : ContentPage
 
     private async void HomePageButton_Clicked(object sender, EventArgs e)
     {
-        
+        await _model.LoadHomePageAsync();
     }  
 
     private async void SearchPageButton_Clicked(object sender, EventArgs e)
     {
-        
+        await _model.LoadSearchPageAsync();
     }
 
     private async void DetailsPageButton_Clicked(object sender, EventArgs e)
@@ -60,12 +60,12 @@ public partial class SideMenuPage : ContentPage
 
 	private async void StatisticsPageButton_Clicked(object sender, EventArgs e)
 	{
-		
+		await _model.LoadStatisticsPageAsync();
 	}
 
     private async void NewPicturePageButton_Clicked(object sender, EventArgs e)
     {
-
+        await _model.LoadNewPicturePageAsync();
     }
 
 

@@ -8,10 +8,7 @@ public partial class StatisticsPage : ContentPage
 
 	public StatisticsPage(MemoriesAppModel model)
 	{
+        InitializeComponent();
         _model = model;
     }
-	public StatisticsPage()
-	{
-		InitializeComponent();
-	}
 }

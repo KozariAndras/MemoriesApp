@@ -3,10 +3,40 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Memories_App.NewPicturePage"
              Title="NewPicturePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout>
+        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+            <Label Text="Simple Photo" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+        </Frame>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button Text="Take Photo" Clicked="TakePhotoButton_Clicked" />
+            <Button Text="Pick Photo" Grid.Row="1" Clicked="ChoosePhotoButton_Clicked" />
+
+        </Grid>
+        <Grid Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Image x:Name="_displayImage" Aspect="AspectFit" HeightRequest="200" Grid.Row="0" />
+
+            <Entry Placeholder="Title" x:Name="_titleEntry" Grid.Row="1" />
+
+            <Entry Placeholder="Description" x:Name="_descriptionEntry" Grid.Row="2" />
+
+            <Entry Placeholder="Tags" x:Name="_tagsEntry" Grid.Row="3" />
+
+            <Button Text="Save" Clicked="SaveButton_Clicked" Grid.Row="4" />
+
+        </Grid>
+
+    </StackLayout>
 </ContentPage>

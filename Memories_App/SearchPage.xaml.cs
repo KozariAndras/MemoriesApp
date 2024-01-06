@@ -8,11 +8,7 @@ public partial class SearchPage : ContentPage
 
     public SearchPage(MemoriesAppModel model)
     {
+        InitializeComponent();
         _model = model;
     }
-
-    public SearchPage()
-	{
-		InitializeComponent();
-	}
 }
