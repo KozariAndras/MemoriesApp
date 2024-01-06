@@ -1,5 +1,4 @@
-﻿using Memories_App.Model;
-using Memories_App.Persistence.DTO;
+﻿using Memories_App.Persistence.DTO;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -58,8 +57,6 @@ namespace Memories_App.Persistence
         }      
 
         #endregion
-
-
 
 
         #region public methods

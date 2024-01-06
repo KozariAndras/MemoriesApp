@@ -19,10 +19,7 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Memories_App.Model\Memories_App.Model.csproj" />
+	  <PackageReference Include="SixLabors.ImageSharp" Version="3.1.2" />
 	</ItemGroup>
 
 </Project>

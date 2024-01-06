@@ -21,4 +21,8 @@
 	  <PackageReference Include="SixLabors.ImageSharp" Version="3.1.2" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Memories_App.Persistence\Memories_App.Persistence.csproj" />
+	</ItemGroup>
+
 </Project>

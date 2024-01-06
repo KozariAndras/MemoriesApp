@@ -1,4 +1,4 @@
-﻿using Memories_App.Model;
+﻿using Memories_App.Persistence.DTO;
 
 namespace Memories_App.Persistence
 {
