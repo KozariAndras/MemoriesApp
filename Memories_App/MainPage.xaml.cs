@@ -20,15 +20,7 @@ namespace Memories_App
 
             foreach (var memory in _model.Memories)
             {
-                UserMemoryView view = new UserMemoryView();
-                view.BindingContext = memory;
-                view.ImageValue = ImageSource.FromStream(() => new MemoryStream(memory.ImageBytes));
-                view.TitleValue = memory.Title;
-                view.DescriptionValue = memory.Description;
-                view.TagsValue = memory.Tags;
-                view.DateValue = memory.Date.ToLongDateString();
-                view.LocationValue = memory.Location is null ? "N/A" : memory.Location.ToString();
-
+                UserMemoryView view = new UserMemoryView(memory);               
                 _memoriesView.Children.Add(view);
             }
         }

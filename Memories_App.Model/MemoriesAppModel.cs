@@ -23,6 +23,7 @@ namespace Memories_App.Model
         IMemoriesAppPersistence _persistence;
 
         public ObservableCollection<UserMemory> Memories { get; set; }
+        public List<UserMemory> FilteredMemories { get; set; }
 
         public Image<Rgba32>? NewImage { get; set; }
 
@@ -39,6 +40,7 @@ namespace Memories_App.Model
         {
             _persistence = persistence;
             Memories = new();
+            FilteredMemories = new();
             /*
             var memories = _persistence.GetAllUserMemoriesAsync().Result;
             foreach (var memory in memories)
@@ -72,24 +74,29 @@ namespace Memories_App.Model
         }
 
 
-        public async Task<IEnumerable<int>> FilterMemoriesAsync(string filterBy, string filterValue)
-        {/*
+        public async Task FilterMemoriesAsync(string filterBy, string filterValue)
+        {
+            if (!string.IsNullOrEmpty(filterBy)) return;
+            if (!string.IsNullOrEmpty(filterValue)) return;
+
             switch (filterBy)
             {
                 case "Title":
-                    return Memories.Select(x => x.Id).Where(id => Memories.Where(memory => memory.Title.Contains(filterValue)).Select(x => x.Id).Contains(id));
+                    FilteredMemories = Memories.Where(m => m.Title.Contains(filterValue)).ToList();
+                    break;
                 case "Description":
-                    Memories.Where(memory => memory.Description.Contains(filterValue));
+                    FilteredMemories = Memories.Where(m => m.Description.Contains(filterValue)).ToList();
+                    break;
                 case "Tags":
-                    Memories.Where(memory => memory.Tags.Contains(filterValue));
+                    FilteredMemories = Memories.Where(m => m.Tags.Contains(filterValue)).ToList();
+                    break;
                 case "Date":
                     DateTime filterDate = DateTime.Parse(filterValue);
-                    Memories.Where(memory => memory.Date >= filterDate && memory.Date <= DateTime.Today);
+                    FilteredMemories = Memories.Where(m => m.Date >= filterDate && m.Date <= DateTime.Now).ToList();
+                    break;
                 default:
-            }
-                    return new List<UserMemory>();
-            */
-            return new List<int>();
+                    break;
+            }        
         }
 
         public async Task LoadHomePageAsync()

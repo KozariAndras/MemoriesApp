@@ -1,3 +1,5 @@
+using Memories_App.Persistence.DTO;
+
 namespace Memories_App;
 
 public partial class UserMemoryView : ContentView
@@ -95,4 +97,19 @@ public partial class UserMemoryView : ContentView
 	{
 		InitializeComponent();
 	}
+
+    public UserMemoryView(UserMemory memory)
+    {
+        InitializeComponent();
+        this.BindingContext = memory;
+        ImageValue = ImageSource.FromStream(() => new MemoryStream(memory.ImageBytes));
+        TitleValue = memory.Title;
+        DescriptionValue = memory.Description;
+        TagsValue = memory.Tags;
+        DateValue = memory.Date.ToLongDateString();
+        LocationValue = memory.Location is null ? "N/A" : memory.Location.ToString();
+            
+
+
+    }
 }

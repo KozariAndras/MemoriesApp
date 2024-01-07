@@ -21,9 +21,9 @@
 
         <Button Text="Search" Clicked="SearchButton_Clicked" />
 
-        <ListView x:Name="_searchResultList">
+        <VerticalStackLayout x:Name="_searchResultList">
 
-        </ListView>
+        </VerticalStackLayout>
 
     </StackLayout>
     </ScrollView>

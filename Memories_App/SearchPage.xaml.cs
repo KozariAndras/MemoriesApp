@@ -16,9 +16,15 @@ public partial class SearchPage : ContentPage
     public async void SearchButton_Clicked(object sender, EventArgs e)
     {
         
-        string filterBy = _filterPicker.SelectedItem.ToString();
+        string? filterBy = (string) _filterPicker.SelectedItem;
         string filterValue = _searchEntry.Text;
+        await _model.FilterMemoriesAsync(filterBy, filterValue);
 
-        //IEnumerable<UserMemory> filteredMemories = await _model.FilterMemoriesAsync(filterBy, filterValue);
+        _searchResultList.Children.Clear();
+        foreach (var item in _model.FilteredMemories)
+        {
+            UserMemoryView view = new(item);
+            _searchResultList.Children.Add(view);
+        }
     }
 }
