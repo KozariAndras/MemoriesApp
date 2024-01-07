@@ -7,14 +7,16 @@ namespace Memories_App
 
         private MemoriesAppModel _model;
 
+        public MainPage(MemoriesAppModel model)
+        {
+            _model = model;
+            InitializeComponent();
+        }   
+
         public MainPage()
         {
             InitializeComponent();
-            if (BindingContext is MemoriesAppModel model)
-            {
-                _model = model;
-            }
-        }   
-        
+        }
+ 
     }
 }

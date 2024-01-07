@@ -5,7 +5,7 @@
 
     <ScrollView>
         <VerticalStackLayout x:Name="_memoriesView" Spacing="25" Padding="30,0" VerticalOptions="Center">
-            <Label>FAAAAAAAAAAAAAAAAAAAAAAASz</Label>
+            <Label>Hello!</Label>
         </VerticalStackLayout>
     </ScrollView>
 
