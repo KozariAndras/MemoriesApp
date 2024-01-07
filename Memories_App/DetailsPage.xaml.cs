@@ -18,10 +18,19 @@ public partial class DetailsPage : ContentPage
         {
             _ItemsList.Children.Clear();
             _ItemsList.Children.Add(new UserMemoryView(_model.DetailedMemory));
+            Button button = new() { Text = "Delete" };
+            button.Clicked += DeleteButton_Clicked;
+            _ItemsList.Children.Add(button);
         }
     }
 
-
+    public async void DeleteButton_Clicked(object sender, EventArgs e)
+    {
+        _model.Memories.Remove(_model.DetailedMemory);
+        _model.DetailedMemory = null;
+        await _model.SaveMemoriesAsync();
+        await _model.LoadHomePageAsync();
+    }
 
     protected override void OnAppearing()
     {
