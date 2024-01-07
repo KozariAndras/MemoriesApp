@@ -18,26 +18,14 @@ namespace Memories_App.Persistence.DTO
         public DateTime Date { get; set; }
         public Location Location { get; set; }
 
-        public SaveableUserMemory(int id , Image<Rgba32> image, string title, string description, List<string> tags, DateTime date, Location location)
+        public SaveableUserMemory(int id , MemoryStream imageStream, string title, string description, List<string> tags, DateTime date, Location location)
         {
             this.Id = id;
             this.Title = title;
             this.Description = description;
             this.Date = date;
             this.Location = location;
-
-            try
-            {
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    image.SaveAsJpeg(ms);
-                    this.ImageStream = ms.ToArray();
-                }
-            }
-            catch (Exception)
-            {
-                Console.WriteLine($"WARNING! Image with Id:{id} could not be saved!");
-            }           
+            this.ImageStream = imageStream.ToArray();                     
 
             if (tags == null)
             {

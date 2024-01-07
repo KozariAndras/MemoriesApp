@@ -71,7 +71,10 @@ namespace Memories_App.Model
 
         public async Task LoadHomePageAsync()
         {
-            Memories = (ObservableCollection<UserMemory>)await _persistence.GetAllUserMemoriesAsync();
+            foreach (var memory in await _persistence.GetAllUserMemoriesAsync())
+            {
+                Memories.Add(memory);
+            }
             OnHomePageLoaded();
         }
 

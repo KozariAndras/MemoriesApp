@@ -16,7 +16,7 @@ namespace Memories_App.Persistence.DTO
         {
             foreach (var mem in mems)
             {
-                this.Memories.Add(new SaveableUserMemory(mem.Id, mem.Image, mem.Title, mem.Description, mem.Tags, mem.Date, mem.Location));
+                this.Memories.Add(new SaveableUserMemory(mem.Id, mem.ImageStream, mem.Title, mem.Description, mem.Tags, mem.Date, mem.Location));
             }
         }
     }

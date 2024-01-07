@@ -19,7 +19,7 @@ namespace Memories_App
         }
 
 
-        private async void _model_HomePageLoaded()
+        private async void _model_HomePageLoaded(object sender, EventArgs e)
         {
             UpdateUI();
         }
@@ -31,20 +31,26 @@ namespace Memories_App
             {
                 UserMemoryView view = new UserMemoryView();
                 view.BindingContext = memory;
-                view.ImageValue = memory.Image;
+                //view.ImageValue = memory.ImageStream;
             }
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _model.HomePageLoaded += _model_HomePageLoaded();
+            if (_model is not null)
+            {
+                _model.HomePageLoaded += _model_HomePageLoaded;
+            }
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            _model.HomePageLoaded -= _model_HomePageLoaded();
+            if (_model is not null)
+            {
+                _model.HomePageLoaded -= _model_HomePageLoaded;
+            }
         }
     }
 }
