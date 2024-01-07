@@ -80,7 +80,7 @@ public partial class NewPicturePage : ContentPage
         _model.NewImage.Dispose();
         _model.NewImage = null;
         _model.Memories.Add(newMemory);
-        //await _model.SaveMemoriesAsync();
+        await _model.SaveMemoriesAsync();
         await DisplayAlert("Success", "Memory added successfully", "OK");
         await _model.LoadHomePageAsync();
     }

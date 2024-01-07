@@ -10,7 +10,7 @@ namespace Memories_App.Persistence
 {
     public class MemoriesAppJSONPersistence : IMemoriesAppPersistence
     {
-        private string _filename => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "memories.json");
+        private string _filename => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "data.json");
 
         #region private methods
 
@@ -35,7 +35,7 @@ namespace Memories_App.Persistence
                 //File.Delete(_filename);
                 if (File.Exists(_filename))
                 {
-                    string json = await File.ReadAllTextAsync(_filename);
+                    string json = File.ReadAllText(_filename);
                     SaveableUserData userData = JsonConvert.DeserializeObject<SaveableUserData>(json);
                     List<UserMemory> memories = new();
                     foreach (var mem in userData.Memories)

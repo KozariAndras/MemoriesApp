@@ -41,13 +41,13 @@ namespace Memories_App.Model
             _persistence = persistence;
             Memories = new();
             FilteredMemories = new();
-            /*
+            
             var memories = _persistence.GetAllUserMemoriesAsync().Result;
             foreach (var memory in memories)
             {
                 Memories.Add(memory);
             }
-            */
+            
         }
 
 
@@ -101,13 +101,13 @@ namespace Memories_App.Model
 
         public async Task LoadHomePageAsync()
         {
-            /*
+            
             Memories.Clear();
             foreach (var memory in await _persistence.GetAllUserMemoriesAsync())
             {
                 Memories.Add(memory);
             }
-            */
+            
             OnHomePageLoaded();
         }
 
