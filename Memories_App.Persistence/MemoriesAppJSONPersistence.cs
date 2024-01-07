@@ -107,7 +107,7 @@ namespace Memories_App.Persistence
                     mem.Date = memory.Date;
                     mem.Location = memory.Location;
                     mem.Tags = memory.Tags;
-                    mem.ImageStream = memory.ImageStream;
+                    mem.ImageBytes = memory.ImageBytes;
                     break;
                 }
             }

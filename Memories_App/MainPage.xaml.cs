@@ -22,7 +22,7 @@ namespace Memories_App
             {
                 UserMemoryView view = new UserMemoryView();
                 view.BindingContext = memory;
-                view.ImageValue = ImageSource.FromStream(() => memory.ImageStream);
+                view.ImageValue = ImageSource.FromStream(() => new MemoryStream(memory.ImageBytes));
                 view.TitleValue = memory.Title;
                 view.DescriptionValue = memory.Description;
                 view.TagsValue = memory.Tags;

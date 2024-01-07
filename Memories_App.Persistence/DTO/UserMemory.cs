@@ -14,7 +14,7 @@ namespace Memories_App.Persistence.DTO
     public class UserMemory
     {
         public int Id { get; set; }
-        public MemoryStream ImageStream { get; set; }
+        public byte[] ImageBytes { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public List<string> Tags { get; set; }
@@ -29,7 +29,7 @@ namespace Memories_App.Persistence.DTO
             this.Description = description;
             this.Date = date;
             this.Location = location;
-            this.ImageStream = new MemoryStream(imageStream);
+            ImageBytes = imageStream;
 
             if (tags == null)
             {
@@ -44,9 +44,11 @@ namespace Memories_App.Persistence.DTO
         public UserMemory(int id, Image<Rgba32> image, string title, string description, List<string> tags, DateTime date, Location location)
         {
             var encoder = new BmpEncoder();
-            this.ImageStream = new MemoryStream();
-            image.Save(this.ImageStream, encoder);
-            ImageStream.Seek(0, SeekOrigin.Begin);
+            var tempStream = new MemoryStream();
+            image.Save(tempStream, encoder);
+            tempStream.Seek(0, SeekOrigin.Begin);
+            ImageBytes = tempStream.ToArray();
+            tempStream.Dispose();
             this.Id = id;
             this.Title = title;
             this.Description = description;
