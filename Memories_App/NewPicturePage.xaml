@@ -5,7 +5,7 @@
              Title="NewPicturePage">
     <StackLayout>
         <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Simple Photo" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            <Label Text="Add a new picture!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
         <Grid>
             <Grid.RowDefinitions>
@@ -13,8 +13,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button Text="Take Photo" Clicked="TakePhotoButton_Clicked" />
-            <Button Text="Pick Photo" Grid.Row="1" Clicked="ChoosePhotoButton_Clicked" />
+            <Button x:Name="_takePhotoButton" Text="Take Photo" Clicked="TakePhotoButton_Clicked" />
+            <Button x:Name="_choosePhotoButton" Text="Choose Photo" Grid.Row="1" Clicked="ChoosePhotoButton_Clicked" />
 
         </Grid>
         <Grid Padding="20">
@@ -34,7 +34,7 @@
 
             <Entry Placeholder="Tags" x:Name="_tagsEntry" Grid.Row="3" />
 
-            <Button Text="Save" Clicked="SaveButton_Clicked" Grid.Row="4" />
+            <Button x:Name="_saveButton" Text="Save" Clicked="SaveButton_Clicked" Grid.Row="4" />
 
         </Grid>
 

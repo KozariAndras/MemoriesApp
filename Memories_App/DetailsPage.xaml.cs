@@ -38,7 +38,7 @@ public partial class DetailsPage : ContentPage
         {
             await Map.OpenAsync(_model.DetailedMemory.Location, options);
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // No map application available to open
         }
@@ -56,5 +56,19 @@ public partial class DetailsPage : ContentPage
     {
         base.OnAppearing();
         UpdateUI();
+    }
+
+    protected override void OnDisappearing()
+    {
+        _model.DetailedMemory = null;
+        foreach (var child in _ItemsList.Children)
+        {
+            if (child is Button)
+            {
+                (child as Button).Clicked -= DeleteButton_Clicked;
+                (child as Button).Clicked -= LocationButton_Clicked;
+            }
+        }
+        base.OnDisappearing();
     }
 }

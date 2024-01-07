@@ -15,17 +15,23 @@ namespace Memories_App
 
         private async void UpdateUI()
         {
-            _memoriesView.Children.Clear();
-            if (_model is null) return;
-            if (_model.Memories is null) return;
-            _model.Memories.Sort((x, y) => y.Date.CompareTo(x.Date));
-            foreach (var memory in _model.Memories)
+            await Task.Run(() => 
             {
-                Button button = new() { Text = "Details"};
-                ShortMemoryView shortMemoryView = new(memory,button);
-                shortMemoryView.NavButtonClicked += DetailsButton_Clicked;
-                _memoriesView.Children.Add(shortMemoryView);
-            }
+                _memoriesView.Children.Clear();
+                if (_model is null) return;
+                if (_model.Memories is null) return;
+                _model.Memories.Sort((x, y) => y.Date.CompareTo(x.Date));
+                foreach (var memory in _model.Memories)
+                {
+                    Button button = new() { Text = "Details" };
+                    ShortMemoryView shortMemoryView = new(memory, button);
+                    shortMemoryView.NavButtonClicked += DetailsButton_Clicked;
+                    _memoriesView.Children.Add(shortMemoryView);
+                }
+
+            });
+
+            
         }
 
         private async void DetailsButton_Clicked(object sender, EventArgs e)
@@ -36,7 +42,7 @@ namespace Memories_App
         }
 
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             UpdateUI();
@@ -52,6 +58,7 @@ namespace Memories_App
                 }
             }
             _memoriesView.Children.Clear();
+            _model.Dispose();
             base.OnDisappearing();
         }
     }

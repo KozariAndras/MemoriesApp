@@ -78,6 +78,11 @@ public partial class SideMenuPage : ContentPage
 
     protected override void OnDisappearing()
     {
+        _model.HomePageLoaded -= HomePageButton_Clicked;
+        _model.SearchPageLoaded -= SearchPageButton_Clicked;
+        _model.DetailsPageLoaded -= DetailsPageButton_Clicked;
+        _model.StatisticsPageLoaded -= StatisticsPageButton_Clicked;
+        _model.NewPicturePageLoaded -= NewPicturePageButton_Clicked;
         _NavButtonList.Children.Clear();
         base.OnDisappearing();
     }

@@ -19,7 +19,7 @@
             </Picker.ItemsSource>
         </Picker>
 
-        <Button Text="Search" Clicked="SearchButton_Clicked" />
+        <Button x:Name="_searchButton" Text="Search" Clicked="SearchButton_Clicked" />
 
         <VerticalStackLayout x:Name="_searchResultList">
 

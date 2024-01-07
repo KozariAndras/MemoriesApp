@@ -22,11 +22,11 @@ public partial class NewPicturePage : ContentPage
             if (photoFile != null)
                 await _model.LoadImage(await photoFile.OpenReadAsync());
         }
-        catch (FeatureNotSupportedException fnsEx)
+        catch (FeatureNotSupportedException)
         {
             // Feature is not supported on the device
         }
-        catch (PermissionException pEx)
+        catch (PermissionException)
         {
             // Permissions not granted
         }
@@ -74,8 +74,7 @@ public partial class NewPicturePage : ContentPage
         }
 
         List<string> tags = _tagsEntry.Text.Split(',').ToList();
-        //Location location = await _model.GetCurrentLocation();
-        Location location = new Location(47.47239924976517, 19.06231660879155);
+        Location location = await _model.GetCurrentLocation();
         int id = _model.Memories.Count == 0 ? 1 : _model.Memories.Max(m => m.Id) + 1;
         UserMemory newMemory = new UserMemory(id, _model.NewImage, _titleEntry.Text, _descriptionEntry.Text, tags, DateTime.Now, location);
         _model.NewImage.Dispose();
@@ -85,6 +84,7 @@ public partial class NewPicturePage : ContentPage
         await DisplayAlert("Success", "Memory added successfully", "OK");
         await _model.LoadHomePageAsync();
     }
+
 
     private void _model_PhotoLoaded(object sender, EventArgs e)
     {
@@ -106,6 +106,9 @@ public partial class NewPicturePage : ContentPage
             _model.NewImage.Dispose();
             _model.NewImage = null;
         }
+        _choosePhotoButton.Clicked -= ChoosePhotoButton_Clicked;
+        _takePhotoButton.Clicked -= TakePhotoButton_Clicked;
+        _saveButton.Clicked -= SaveButton_Clicked;
         _model.PhotoLoaded -= _model_PhotoLoaded;
     }
 }

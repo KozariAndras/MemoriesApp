@@ -69,5 +69,16 @@ namespace Memories_App
                 await _rootPage.NavigationPage.PushAsync(new NewPicturePage(_model));
             }
         }
+
+        protected override void CleanUp()
+        {
+            _model.HomePageLoaded -= _model_HomePageLoaded;
+            _model.SearchPageLoaded -= _model_SearchPageLoaded;
+            _model.DetailsPageLoaded -= _model_DetailsPageLoaded;
+            _model.StatisticsPageLoaded -= _model_StatisticsPageLoaded;
+            _model.NewPicturePageLoaded -= _model_NewPicturePageLoaded;
+            _model.Dispose();
+            base.CleanUp();
+        }
     }
 }
