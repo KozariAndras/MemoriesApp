@@ -72,6 +72,25 @@ namespace Memories_App.Model
         }
 
 
+        public async Task<IEnumerable<int>> FilterMemoriesAsync(string filterBy, string filterValue)
+        {/*
+            switch (filterBy)
+            {
+                case "Title":
+                    return Memories.Select(x => x.Id).Where(id => Memories.Where(memory => memory.Title.Contains(filterValue)).Select(x => x.Id).Contains(id));
+                case "Description":
+                    Memories.Where(memory => memory.Description.Contains(filterValue));
+                case "Tags":
+                    Memories.Where(memory => memory.Tags.Contains(filterValue));
+                case "Date":
+                    DateTime filterDate = DateTime.Parse(filterValue);
+                    Memories.Where(memory => memory.Date >= filterDate && memory.Date <= DateTime.Today);
+                default:
+            }
+                    return new List<UserMemory>();
+            */
+            return new List<int>();
+        }
 
         public async Task LoadHomePageAsync()
         {

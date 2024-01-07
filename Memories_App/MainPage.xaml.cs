@@ -5,7 +5,7 @@ namespace Memories_App
     public partial class MainPage : ContentPage
     {
 
-        private MemoriesAppModel _model => App.Current.MainPage.BindingContext as MemoriesAppModel;  
+        private MemoriesAppModel _model => App.Current.MainPage.BindingContext as MemoriesAppModel;
 
         public MainPage()
         {

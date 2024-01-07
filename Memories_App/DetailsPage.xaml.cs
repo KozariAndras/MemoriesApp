@@ -4,7 +4,7 @@ namespace Memories_App;
 public partial class DetailsPage : ContentPage
 {
     private MemoriesAppModel _model;
-
+    
     public DetailsPage(MemoriesAppModel model)
     {
         _model = model;
