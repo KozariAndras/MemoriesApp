@@ -31,7 +31,7 @@ public partial class UserMemoryView : ContentView
 
     private void OnTitleChanged(string title)
     {
-        Title.Text = title;
+        Title.Text = "Title: " + title;
     }
 
 
@@ -45,7 +45,7 @@ public partial class UserMemoryView : ContentView
     }
     private void OnDescriptionChanged(string description)
     {
-        Description.Text = description;
+        Description.Text = "Description: " +description;
     }
 
 
@@ -60,21 +60,21 @@ public partial class UserMemoryView : ContentView
 
     private void OnDateChanged(string date)
     {
-        Date.Text = date;
+        Date.Text = "Date: " + date;
     }
 
 
 	public static readonly BindableProperty LocationProperty 
         = BindableProperty.Create(nameof(LocationValue), typeof(string), typeof(UserMemoryView), "", BindingMode.OneWay, null,
-            (b, o, n) => (b as UserMemoryView).OnLocationChanged(n as Location));
+            (b, o, n) => (b as UserMemoryView).OnLocationChanged(n as string));
 	public string LocationValue
     {
         get => (string)GetValue(LocationProperty);
         set => SetValue(LocationProperty, value);
     }
-    private void OnLocationChanged(Location location)
+    private void OnLocationChanged(string location)
     {
-        Location.Text = location is null ? "N/A" : String.Join(location.Latitude.ToString(), location.Longitude.ToString());
+        Location.Text = "Location: " + location;
     }
 
 
@@ -89,7 +89,7 @@ public partial class UserMemoryView : ContentView
 
     private void OnTagChanged(List<string> tags)
     {
-        Tag.Text = string.Join(", ", tags);
+        Tag.Text = "Tags: " + string.Join(", ", tags);
     }
 
 
@@ -107,7 +107,7 @@ public partial class UserMemoryView : ContentView
         DescriptionValue = memory.Description;
         TagsValue = memory.Tags;
         DateValue = memory.Date.ToLongDateString();
-        LocationValue = memory.Location is null ? "N/A" : String.Join(memory.Location.Latitude.ToString(), memory.Location.Longitude.ToString());
+        LocationValue = memory.Location is null ? "N/A" : $"{memory.Location.Latitude} - {memory.Location.Longitude}";
 
 
 
