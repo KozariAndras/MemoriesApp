@@ -12,9 +12,13 @@ public partial class DetailsPage : ContentPage
     }
 
 
-    private void LoadPageContent()
+    private void UpdateUI()
     {
-
+        if (_model is not null && _model.DetailedMemory is not null)
+        {
+            _ItemsList.Children.Clear();
+            _ItemsList.Children.Add(new UserMemoryView(_model.DetailedMemory));
+        }
     }
 
 
@@ -22,6 +26,6 @@ public partial class DetailsPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        LoadPageContent();
+        UpdateUI();
     }
 }

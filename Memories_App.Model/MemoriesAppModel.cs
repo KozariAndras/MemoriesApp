@@ -22,8 +22,9 @@ namespace Memories_App.Model
 
         IMemoriesAppPersistence _persistence;
 
-        public ObservableCollection<UserMemory> Memories { get; set; }
+        public List<UserMemory> Memories { get; set; }
         public List<UserMemory> FilteredMemories { get; set; }
+        public UserMemory? DetailedMemory { get; set; }
 
         public Image<Rgba32>? NewImage { get; set; }
 
@@ -76,8 +77,8 @@ namespace Memories_App.Model
 
         public async Task FilterMemoriesAsync(string filterBy, string filterValue)
         {
-            if (!string.IsNullOrEmpty(filterBy)) return;
-            if (!string.IsNullOrEmpty(filterValue)) return;
+            if (string.IsNullOrEmpty(filterBy)) return;
+            if (string.IsNullOrEmpty(filterValue)) return;
 
             switch (filterBy)
             {
@@ -92,7 +93,7 @@ namespace Memories_App.Model
                     break;
                 case "Date":
                     DateTime filterDate = DateTime.Parse(filterValue);
-                    FilteredMemories = Memories.Where(m => m.Date >= filterDate && m.Date <= DateTime.Now).ToList();
+                    FilteredMemories = Memories.Where(m => m.Date.Date == filterDate.Date).ToList();
                     break;
                 default:
                     break;
@@ -122,8 +123,9 @@ namespace Memories_App.Model
             OnSearchPageLoaded();
         }
 
-        public async Task LoadDetailsPageAsync()
+        public async Task LoadDetailsPageAsync(UserMemory? memory)
         {
+            DetailedMemory = memory;
             OnDetailsPageLoaded();
         }
 

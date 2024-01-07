@@ -55,7 +55,7 @@ public partial class SideMenuPage : ContentPage
 
     private async void DetailsPageButton_Clicked(object sender, EventArgs e)
     {
-        await _model.LoadDetailsPageAsync();
+        await _model.LoadDetailsPageAsync(null);
     }
 
 	private async void StatisticsPageButton_Clicked(object sender, EventArgs e)

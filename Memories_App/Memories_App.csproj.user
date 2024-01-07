@@ -37,6 +37,9 @@
     <MauiXaml Update="SearchPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="ShortMemoryView.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="SideMenuPage.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
