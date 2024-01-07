@@ -5,9 +5,8 @@ public partial class MainFlyoutPage : FlyoutPage
 {
 	public NavigationPage NavigationPage => _navigationPage;
 
-	public MainFlyoutPage(MemoriesAppModel model)
+	public MainFlyoutPage()
 	{
-		_navigationPage = new NavigationPage(new MainPage(model));
 		InitializeComponent();
 	}
 }
