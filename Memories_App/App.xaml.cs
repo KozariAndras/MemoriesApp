@@ -16,7 +16,6 @@ namespace Memories_App
             _model = new MemoriesAppModel(_persistence);
             _rootPage = new MainFlyoutPage();
             _rootPage.Flyout = new SideMenuPage(_model);
-            _rootPage.Detail = new MainPage(_model);
             _rootPage.BindingContext = _model;
             MainPage = _rootPage;
 
