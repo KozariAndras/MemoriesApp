@@ -80,24 +80,30 @@ namespace Memories_App.Model
             if (string.IsNullOrEmpty(filterBy)) return;
             if (string.IsNullOrEmpty(filterValue)) return;
 
-            switch (filterBy)
+            await Task.Run(() =>
             {
-                case "Title":
-                    FilteredMemories = Memories.Where(m => m.Title.Contains(filterValue)).ToList();
-                    break;
-                case "Description":
-                    FilteredMemories = Memories.Where(m => m.Description.Contains(filterValue)).ToList();
-                    break;
-                case "Tags":
-                    FilteredMemories = Memories.Where(m => m.Tags.Contains(filterValue)).ToList();
-                    break;
-                case "Date":
-                    DateTime filterDate = DateTime.Parse(filterValue);
-                    FilteredMemories = Memories.Where(m => m.Date.Date == filterDate.Date).ToList();
-                    break;
-                default:
-                    break;
-            }        
+
+                switch (filterBy)
+                {
+                    case "Title":
+                        FilteredMemories = Memories.Where(m => m.Title.Contains(filterValue)).ToList();
+                        break;
+                    case "Description":
+                        FilteredMemories = Memories.Where(m => m.Description.Contains(filterValue)).ToList();
+                        break;
+                    case "Tags":
+                        FilteredMemories = Memories.Where(m => m.Tags.Contains(filterValue)).ToList();
+                        break;
+                    case "Date":
+                        DateTime filterDate = DateTime.Parse(filterValue);
+                        FilteredMemories = Memories.Where(m => m.Date.Date == filterDate.Date).ToList();
+                        break;
+                    default:
+                        break;
+                }
+
+            });
+                
         }
 
         public async Task LoadHomePageAsync()
@@ -200,13 +206,10 @@ namespace Memories_App.Model
 
                 
             }
-            // Catch one of the following exceptions:
-            //   FeatureNotSupportedException
-            //   FeatureNotEnabledException
-            //   PermissionException
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Unable to get location
+                //ELTE location
+                location = new Location(47.47239924976517, 19.06231660879155);
             }
             finally
             {
