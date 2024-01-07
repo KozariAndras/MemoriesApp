@@ -80,30 +80,24 @@ namespace Memories_App.Model
             if (string.IsNullOrEmpty(filterBy)) return;
             if (string.IsNullOrEmpty(filterValue)) return;
 
-            await Task.Run(() =>
+            switch (filterBy)
             {
-
-                switch (filterBy)
-                {
-                    case "Title":
-                        FilteredMemories = Memories.Where(m => m.Title.Contains(filterValue)).ToList();
-                        break;
-                    case "Description":
-                        FilteredMemories = Memories.Where(m => m.Description.Contains(filterValue)).ToList();
-                        break;
-                    case "Tags":
-                        FilteredMemories = Memories.Where(m => m.Tags.Contains(filterValue)).ToList();
-                        break;
-                    case "Date":
-                        DateTime filterDate = DateTime.Parse(filterValue);
-                        FilteredMemories = Memories.Where(m => m.Date.Date == filterDate.Date).ToList();
-                        break;
-                    default:
-                        break;
-                }
-
-            });
-                
+                case "Title":
+                    FilteredMemories = Memories.Where(m => m.Title.Contains(filterValue)).ToList();
+                    break;
+                case "Description":
+                    FilteredMemories = Memories.Where(m => m.Description.Contains(filterValue)).ToList();
+                    break;
+                case "Tags":
+                    FilteredMemories = Memories.Where(m => m.Tags.Contains(filterValue)).ToList();
+                    break;
+                case "Date":
+                    DateTime filterDate = DateTime.Parse(filterValue);
+                    FilteredMemories = Memories.Where(m => m.Date.Date == filterDate.Date).ToList();
+                    break;
+                default:
+                    break;
+            }
         }
 
         public async Task LoadHomePageAsync()
