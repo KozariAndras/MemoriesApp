@@ -77,17 +77,16 @@ public partial class NewPicturePage : ContentPage
         Location location = await _model.GetCurrentLocation();
         int id = _model.Memories.Count == 0 ? 1 : _model.Memories.Max(m => m.Id) + 1;
         UserMemory newMemory = new UserMemory(id, _model.NewImage, _titleEntry.Text, _descriptionEntry.Text, tags, DateTime.Now, location);
-        _model.Memories.Add(newMemory);
-        await DisplayAlert("Success", "Memory added successfully", "OK");
-        await _model.SaveMemoriesAsync();
         _model.NewImage.Dispose();
         _model.NewImage = null;
+        _model.Memories.Add(newMemory);
+        //await _model.SaveMemoriesAsync();
+        await DisplayAlert("Success", "Memory added successfully", "OK");
         await _model.LoadHomePageAsync();
     }
 
     private void _model_PhotoLoaded(object sender, EventArgs e)
     {
-        //_displayImage.Source = ImageSource.FromFile("dotnet_bot.png");
         _displayImage.Source = ImageSource.FromStream(() => _model.GetImageStream());
     }
 

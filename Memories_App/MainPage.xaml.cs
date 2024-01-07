@@ -12,12 +12,6 @@ namespace Memories_App
             InitializeComponent();
         }
 
-
-        private async void _model_HomePageLoaded(object sender, EventArgs e)
-        {
-            UpdateUI();
-        }
-
         private async void UpdateUI()
         {
             _memoriesView.Children.Clear();
@@ -42,21 +36,12 @@ namespace Memories_App
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            if (_model is not null)
-            {
-                _model.HomePageLoaded += _model_HomePageLoaded;
-                //await _model.LoadHomePageAsync();
-            }
             UpdateUI();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            if (_model is not null)
-            {
-                _model.HomePageLoaded -= _model_HomePageLoaded;
-            }
         }
     }
 }

@@ -15,8 +15,11 @@ using System.Collections.Specialized;
 
 namespace Memories_App.Model
 {
-    public class MemoriesAppModel
+    public class MemoriesAppModel : IDisposable
     {
+
+        private bool _isDisposed;
+
         IMemoriesAppPersistence _persistence;
 
         public ObservableCollection<UserMemory> Memories { get; set; }
@@ -36,11 +39,13 @@ namespace Memories_App.Model
         {
             _persistence = persistence;
             Memories = new();
+            /*
             var memories = _persistence.GetAllUserMemoriesAsync().Result;
             foreach (var memory in memories)
             {
                 Memories.Add(memory);
             }
+            */
         }
 
 
@@ -70,11 +75,13 @@ namespace Memories_App.Model
 
         public async Task LoadHomePageAsync()
         {
+            /*
             Memories.Clear();
             foreach (var memory in await _persistence.GetAllUserMemoriesAsync())
             {
                 Memories.Add(memory);
             }
+            */
             OnHomePageLoaded();
         }
 
@@ -106,6 +113,29 @@ namespace Memories_App.Model
 
 
         #region Additional Methods
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_isDisposed)
+            {
+                if (disposing)
+                {
+                    if (NewImage is not null)
+                    {
+                        NewImage.Dispose();
+                        NewImage = null;
+                        Memories.Clear();
+                    }
+                }
+                _isDisposed = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
 
         public Stream? GetImageStream()
         {
