@@ -2,23 +2,25 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Memories_App.UserMemoryView">
-    <VerticalStackLayout>
-        <Grid Padding="10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-            <Image x:Name="Image" Grid.Row="0" HeightRequest="200" Aspect="AspectFill" />
-            <Label x:Name="Title" Grid.Row="1" FontSize="20" FontAttributes="Bold" />
-            <Label x:Name="Description" Grid.Row="2" />
-            <Label x:Name="Date" Grid.Row="3" />
-            <Label x:Name="Location" Grid.Row="4" />
-            <Label x:Name="Tag" Grid.Row="5" />
-        </Grid>
-    </VerticalStackLayout>
+                <Image x:Name="Image" Grid.Row="0" HeightRequest="500" WidthRequest="500" />
+                <Label x:Name="Title" Grid.Row="1" FontSize="20" FontAttributes="Bold" />
+                <Label x:Name="Description" Grid.Row="2" />
+                <Label x:Name="Date" Grid.Row="3" />
+                <Label x:Name="Location" Grid.Row="4" />
+                <Label x:Name="Tag" Grid.Row="5" />
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentView>

@@ -25,7 +25,9 @@ namespace Memories_App.Persistence.DTO
             this.Description = description;
             this.Date = date;
             this.Location = location;
-            this.ImageStream = imageStream.ToArray();                     
+            imageStream.Seek(0, SeekOrigin.Begin);
+            ImageStream = new byte[imageStream.Length];
+            imageStream.Read(this.ImageStream, 0, (int)imageStream.Length);
 
             if (tags == null)
             {
@@ -35,6 +37,31 @@ namespace Memories_App.Persistence.DTO
             {
                 this.Tags = tags;
             }
+
+        }
+
+        public SaveableUserMemory(int id, byte[] imageStream, string title, string description, List<string> tags, DateTime date, Location location)
+        {
+            this.Id = id;
+            this.Title = title;
+            this.Description = description;
+            this.Date = date;
+            this.Location = location;
+            this.ImageStream = imageStream;
+
+            if (tags == null)
+            {
+                this.Tags = new List<string>();
+            }
+            else
+            {
+                this.Tags = tags;
+            }
+
+        }
+
+        public SaveableUserMemory()
+        {
 
         }
     }

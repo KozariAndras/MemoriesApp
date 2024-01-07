@@ -10,7 +10,7 @@ namespace Memories_App.Persistence
 {
     public class MemoriesAppJSONPersistence : IMemoriesAppPersistence
     {
-        private string _filename => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "memories.json");
+        private string _filename => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "memories.json");
 
         #region private methods
 
@@ -32,16 +32,17 @@ namespace Memories_App.Persistence
         {
             try
             {
+                //File.Delete(_filename);
                 if (File.Exists(_filename))
                 {
                     string json = await File.ReadAllTextAsync(_filename);
-                    var convertedMemories = JsonConvert.DeserializeObject<SaveableUserData>(json);
-
-                    var memories = new List<UserMemory>();
-                    foreach (var mem in convertedMemories.Memories)
+                    SaveableUserData userData = JsonConvert.DeserializeObject<SaveableUserData>(json);
+                    List<UserMemory> memories = new();
+                    foreach (var mem in userData.Memories)
                     {
                         memories.Add(new UserMemory(mem.Id, mem.ImageStream, mem.Title, mem.Description, mem.Tags, mem.Date, mem.Location));
                     }
+
                     return memories;
                 }
                 else
@@ -110,6 +111,12 @@ namespace Memories_App.Persistence
                     break;
                 }
             }
+        }
+
+
+        public async Task SaveAllUserMemoriesAsync(IEnumerable<UserMemory> memories)
+        {
+            await SaveUserMemoriesAsync(memories);
         }
 
         #endregion

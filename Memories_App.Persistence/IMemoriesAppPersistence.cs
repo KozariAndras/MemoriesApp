@@ -16,6 +16,7 @@ namespace Memories_App.Persistence
         Task<IEnumerable<UserMemory>> GetAllUserMemoriesAsync();
         Task RemoveAllUserMemoriesAsync();
         Task UpdateUserMemoryAsync(UserMemory memory);
+        Task SaveAllUserMemoriesAsync(IEnumerable<UserMemory> memories);
 
         #endregion
 

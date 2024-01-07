@@ -75,9 +75,11 @@ public partial class NewPicturePage : ContentPage
 
         List<string> tags = _tagsEntry.Text.Split(',').ToList();
         Location location = await _model.GetCurrentLocation();
-        UserMemory newMemory = new UserMemory(0, _model.NewImage, _titleEntry.Text, _descriptionEntry.Text, tags, DateTime.Now, location);
+        int id = _model.Memories.Count == 0 ? 1 : _model.Memories.Max(m => m.Id) + 1;
+        UserMemory newMemory = new UserMemory(id, _model.NewImage, _titleEntry.Text, _descriptionEntry.Text, tags, DateTime.Now, location);
         _model.Memories.Add(newMemory);
         await DisplayAlert("Success", "Memory added successfully", "OK");
+        await _model.SaveMemoriesAsync();
         _model.NewImage.Dispose();
         _model.NewImage = null;
         await _model.LoadHomePageAsync();

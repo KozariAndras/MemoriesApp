@@ -9,7 +9,7 @@ namespace Memories_App.Persistence.DTO
 {
     public class SaveableUserData
     {
-        public List<SaveableUserMemory> Memories { get; set; }
+        public List<SaveableUserMemory> Memories { get; set; }  = new();
 
 
         public SaveableUserData(IEnumerable<UserMemory> mems)
@@ -18,6 +18,11 @@ namespace Memories_App.Persistence.DTO
             {
                 this.Memories.Add(new SaveableUserMemory(mem.Id, mem.ImageStream, mem.Title, mem.Description, mem.Tags, mem.Date, mem.Location));
             }
+        }
+
+        public SaveableUserData()
+        {
+
         }
     }
 }

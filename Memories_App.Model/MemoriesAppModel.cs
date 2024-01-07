@@ -11,6 +11,7 @@ using SixLabors.ImageSharp;
 using Image = SixLabors.ImageSharp.Image;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Formats.Bmp;
+using System.Collections.Specialized;
 
 namespace Memories_App.Model
 {
@@ -30,8 +31,6 @@ namespace Memories_App.Model
         public event EventHandler? StatisticsPageLoaded;
         public event EventHandler? NewPicturePageLoaded;
         public event EventHandler? PhotoLoaded;
-
-
 
         public MemoriesAppModel(IMemoriesAppPersistence persistence)
         {
@@ -62,7 +61,7 @@ namespace Memories_App.Model
                 NewImage = null;
             }
             NewImage = await Image.LoadAsync<Rgba32>(imageStream);
-            NewImage.Mutate(x => x.Resize(500, 500));
+            NewImage.Mutate(x => x.Resize(256, 256));
 
             OnPhotoLoaded();
         }
@@ -71,12 +70,19 @@ namespace Memories_App.Model
 
         public async Task LoadHomePageAsync()
         {
+            Memories.Clear();
             foreach (var memory in await _persistence.GetAllUserMemoriesAsync())
             {
                 Memories.Add(memory);
             }
             OnHomePageLoaded();
         }
+
+        public async Task SaveMemoriesAsync()
+        {
+            await _persistence.SaveAllUserMemoriesAsync(Memories);
+        }
+
 
         public async Task LoadSearchPageAsync()
         {

@@ -28,7 +28,7 @@ namespace Memories_App
             {
                 UserMemoryView view = new UserMemoryView();
                 view.BindingContext = memory;
-                view.ImageValue = ImageSource.FromStream(() => memory.ImageStream) as ImageSource;
+                view.ImageValue = ImageSource.FromStream(() => memory.ImageStream);
                 view.TitleValue = memory.Title;
                 view.DescriptionValue = memory.Description;
                 view.TagsValue = memory.Tags;
@@ -39,12 +39,13 @@ namespace Memories_App
             }
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
             if (_model is not null)
             {
                 _model.HomePageLoaded += _model_HomePageLoaded;
+                //await _model.LoadHomePageAsync();
             }
             UpdateUI();
         }
