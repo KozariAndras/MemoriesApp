@@ -18,9 +18,29 @@ public partial class DetailsPage : ContentPage
         {
             _ItemsList.Children.Clear();
             _ItemsList.Children.Add(new UserMemoryView(_model.DetailedMemory));
-            Button button = new() { Text = "Delete" };
-            button.Clicked += DeleteButton_Clicked;
-            _ItemsList.Children.Add(button);
+            if (_model.DetailedMemory.Location is not null)
+            {
+                Button locationButton = new() { Text = "Open location on map!" };
+                locationButton.Clicked += LocationButton_Clicked;
+                _ItemsList.Children.Add(locationButton);
+            }
+            Button deleteButton = new() { Text = "Delete" };
+            deleteButton.Clicked += DeleteButton_Clicked;
+            _ItemsList.Children.Add(deleteButton);
+        }
+    }
+
+    private async void LocationButton_Clicked(object sender, EventArgs e)
+    {
+        var options = new MapLaunchOptions { Name = _model.DetailedMemory.Title };
+
+        try
+        {
+            await Map.OpenAsync(_model.DetailedMemory.Location, options);
+        }
+        catch (Exception ex)
+        {
+            // No map application available to open
         }
     }
 

@@ -74,7 +74,8 @@ public partial class NewPicturePage : ContentPage
         }
 
         List<string> tags = _tagsEntry.Text.Split(',').ToList();
-        Location location = await _model.GetCurrentLocation();
+        //Location location = await _model.GetCurrentLocation();
+        Location location = new Location(47.47239924976517, 19.06231660879155);
         int id = _model.Memories.Count == 0 ? 1 : _model.Memories.Max(m => m.Id) + 1;
         UserMemory newMemory = new UserMemory(id, _model.NewImage, _titleEntry.Text, _descriptionEntry.Text, tags, DateTime.Now, location);
         _model.NewImage.Dispose();

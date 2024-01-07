@@ -74,7 +74,7 @@ public partial class UserMemoryView : ContentView
     }
     private void OnLocationChanged(Location location)
     {
-        Location.Text = location is null ? "N/A" : location.ToString();
+        Location.Text = location is null ? "N/A" : String.Join(location.Latitude.ToString(), location.Longitude.ToString());
     }
 
 
@@ -107,8 +107,8 @@ public partial class UserMemoryView : ContentView
         DescriptionValue = memory.Description;
         TagsValue = memory.Tags;
         DateValue = memory.Date.ToLongDateString();
-        LocationValue = memory.Location is null ? "N/A" : memory.Location.ToString();
-            
+        LocationValue = memory.Location is null ? "N/A" : String.Join(memory.Location.Latitude.ToString(), memory.Location.Longitude.ToString());
+
 
 
     }
