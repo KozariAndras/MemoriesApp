@@ -85,6 +85,7 @@ public partial class NewPicturePage : ContentPage
 
     private void _model_PhotoLoaded(object sender, EventArgs e)
     {
+        //_displayImage.Source = ImageSource.FromFile("dotnet_bot.png");
         _displayImage.Source = ImageSource.FromStream(() => _model.GetImageStream());
     }
 

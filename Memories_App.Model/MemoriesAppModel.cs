@@ -9,6 +9,8 @@ using Memories_App.Persistence.DTO;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp;
 using Image = SixLabors.ImageSharp.Image;
+using SixLabors.ImageSharp.Processing;
+using SixLabors.ImageSharp.Formats.Bmp;
 
 namespace Memories_App.Model
 {
@@ -60,6 +62,7 @@ namespace Memories_App.Model
                 NewImage = null;
             }
             NewImage = await Image.LoadAsync<Rgba32>(imageStream);
+            NewImage.Mutate(x => x.Resize(500, 500));
 
             OnPhotoLoaded();
         }
@@ -98,12 +101,12 @@ namespace Memories_App.Model
         {
             if (NewImage != null)
             {
-                using (MemoryStream ms = new MemoryStream())
-                { 
-                    NewImage.SaveAsPng(ms);
-                    ms.Seek(0, SeekOrigin.Begin);
-                    return ms;
-                }
+                MemoryStream ms = new MemoryStream();              
+                var encoder = new BmpEncoder();
+                NewImage.Save(ms, encoder);
+                ms.Seek(0, SeekOrigin.Begin);
+                return ms;
+                
             }
             else return null;
         }
