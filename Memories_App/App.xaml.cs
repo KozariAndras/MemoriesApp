@@ -30,11 +30,11 @@ namespace Memories_App
         }
 
 
-        private void _model_HomePageLoaded(object sender, EventArgs e)
+        private async void _model_HomePageLoaded(object sender, EventArgs e)
         {
-            if (_rootPage.NavigationPage.CurrentPage is not MainFlyoutPage)
+            if (_rootPage.NavigationPage.CurrentPage is not Memories_App.MainPage)
             {
-                _rootPage.NavigationPage.PopToRootAsync();
+                await _rootPage.NavigationPage.PopToRootAsync();
             }
         }
 
