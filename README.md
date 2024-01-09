@@ -33,6 +33,7 @@ Follow these steps to set up the application locally:
 - Build and run the application using the respective commands or IDE tools.
 
 ## Technologies Used
--.NET 7, MAUI - Mobile & Desktop App UI framework
+- .NET 7
+- MAUI - Mobile & Desktop App UI framework
 
 **Note:** This project is still under active development. Some features may be incomplete or subject to change.
